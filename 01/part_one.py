@@ -2,6 +2,9 @@
 # Part 1
 ########
 
+from functools import reduce
+from utils.helper_functions import time_ns
+
 RAW_INPUT = 'input.txt'
 
 
@@ -12,14 +15,24 @@ def read_input(name: str) -> list[int]:
         return [int(line.strip()) for line in f.readlines()]
 
 
+@time_ns
 def count_depth_increase(sonar_sweep: list[int]) -> int:
     """Return length of list that only accepts numbers that are higher than previous"""
 
     return len([a for i, a in enumerate(sonar_sweep) if a > sonar_sweep[i - 1]])
 
 
-if __name__ == '__main__':
-    answer = count_depth_increase(read_input(RAW_INPUT))
+@time_ns
+def count_reduce(sonar_sweep: list[int]) -> dict:
+    """Just playing around with a reduce solution"""
 
+    return reduce(lambda a, b: a | {'increase': a['increase'] + 1, 'prev_number': b} if b > a['prev_number'] else a | {'prev_number': b},
+                  sonar_sweep, {'increase': 0, 'prev_number': sonar_sweep[0] + 1})
+
+
+if __name__ == '__main__':
     print(' Part One '.center(30, '*'))
+
+    answer = count_depth_increase(read_input(RAW_INPUT))
+    print(count_reduce(read_input(RAW_INPUT)))
     print(f'There are a total of {answer} depth increases that the sonar finds.')
