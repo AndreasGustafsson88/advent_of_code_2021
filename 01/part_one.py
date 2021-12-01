@@ -26,8 +26,8 @@ def count_depth_increase(sonar_sweep: list[int]) -> int:
 def count_reduce(sonar_sweep: list[int]) -> dict:
     """Just playing around with a reduce solution"""
 
-    return reduce(lambda a, b: a | {'increase': a['increase'] + 1, 'prev_number': b} if b > a['prev_number'] else a | {'prev_number': b},
-                  sonar_sweep, {'increase': 0, 'prev_number': sonar_sweep[0] + 1})
+    return reduce(lambda a, b: a | {'inc': a['inc'] + 1, 'prev_nr': b} if b > a['prev_nr'] else a | {'prev_nr': b},
+                  sonar_sweep, {'inc': 0, 'prev_nr': sonar_sweep[0] + 1})
 
 
 if __name__ == '__main__':
