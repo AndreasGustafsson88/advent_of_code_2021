@@ -1,6 +1,6 @@
-########
-# Part 2
-########
+######################
+# December 1st, Part 2
+######################
 
 from part_one import read_input, count_depth_increase
 

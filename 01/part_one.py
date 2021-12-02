@@ -1,6 +1,6 @@
-########
-# Part 1
-########
+######################
+# December 1st, Part 1
+######################
 
 from functools import reduce
 from utils.helper_functions import time_ns
