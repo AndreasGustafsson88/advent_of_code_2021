@@ -1,5 +1,5 @@
 ######################
-# December 7th, Part 2
+# December 8th, Part 2
 ######################
 
 from part_one import read_input

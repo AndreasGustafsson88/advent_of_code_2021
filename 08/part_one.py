@@ -1,5 +1,5 @@
 ######################
-# December 7th, Part 1
+# December 8th, Part 1
 ######################
 
 def read_input(name: str):
