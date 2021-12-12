@@ -27,8 +27,7 @@ def complete_lines(chunks):
 def get_sum(line):
     total = 0
     for char in line:
-        total *= 5
-        total += error_points[char]
+        total = total * 5 + error_points[char]
     return total
 
 
