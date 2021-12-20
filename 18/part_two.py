@@ -2,24 +2,7 @@
 # December 18th, Part 2
 #######################
 
-from part_one import read_input, SnailNr, sum_snailfish
-
-
-def calc_magnitude(nrs):
-    altering = True
-    while altering:
-        altering = False
-        for i, nr in enumerate(nrs):
-            if i != len(nrs) - 1:
-                if nr.depth == nrs[i + 1].depth:
-                    new_val = 3 * nr.value + 2 * nrs[i + 1].value
-                    nrs.pop(i)
-                    nrs.insert(i, SnailNr(value=new_val, depth=nr.depth - 1))
-                    nrs.pop(i + 1)
-                    altering = True
-                    break
-
-    return nrs[0].value
+from part_one import read_input, calc_magnitude, sum_snailfish
 
 
 def pair_up(nrs):

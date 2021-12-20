@@ -104,46 +104,23 @@ def calc_magnitude(nrs):
         altering = False
         for i, nr in enumerate(nrs):
             if i != len(nrs) - 1:
-                if nr.depth == nrs[i+1].depth:
-                    new_val = 3 * nr.value + 2 * nrs[i+1].value
+                if nr.depth == nrs[i + 1].depth:
+                    new_val = 3 * nr.value + 2 * nrs[i + 1].value
                     nrs.pop(i)
                     nrs.insert(i, SnailNr(value=new_val, depth=nr.depth - 1))
                     nrs.pop(i + 1)
                     altering = True
                     break
 
-    return nrs[0]
-
-
-def pair_up(nrs):
-    all_pairs = []
-    for i, nr in enumerate(nrs):
-        for j in range(len(nrs)):
-            if i == j:
-                continue
-            else:
-                all_pairs.append([nr, nrs[j]])
-                all_pairs.append([nrs[j], nr])
-    return all_pairs
+    return nrs[0].value
 
 if __name__ == "__main__":
     RAW_INPUT = 'input.txt'
 
     snail_numbers = read_input(RAW_INPUT)
-    pairs_of_snail_nrs = pair_up(snail_numbers)
     summed_snailnumber = sum_snailfish(snail_numbers)
-
-    all_res = [sum_snailfish(list(pair)) for pair in pairs_of_snail_nrs]
-
-    highest = 0
-    for r in all_res:
-        mag = calc_magnitude(r)
-        if mag.value > highest:
-            highest = mag.value
-
-    print(highest)
 
     magnitude = calc_magnitude(summed_snailnumber)
 
     print(' Part One '.center(30, '*'))
-    print(f'The total magnitude of the snailfish numbers are {magnitude.value}')
+    print(f'The total magnitude of the snailfish numbers are {magnitude}')
